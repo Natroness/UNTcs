@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+body {
+  font-feature-settings: "ss01", "cv11";
+}
+
+.card {
+  @apply rounded-2xl border border-slate-200 bg-white shadow-card;
+}
+
+.card-pad {
+  @apply p-5 sm:p-6;
+}
+
+.chip {
+  @apply inline-flex items-center gap-1 rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-xs font-medium text-slate-700;
+}
+
+.chip-green {
+  @apply border-emerald-200 bg-emerald-50 text-emerald-700;
+}
+
+.chip-amber {
+  @apply border-amber-200 bg-amber-50 text-amber-800;
+}
+
+.chip-red {
+  @apply border-rose-200 bg-rose-50 text-rose-700;
+}
+
+.chip-blue {
+  @apply border-sky-200 bg-sky-50 text-sky-700;
+}
