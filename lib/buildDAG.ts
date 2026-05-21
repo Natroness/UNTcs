@@ -1,17 +1,18 @@
-import type { Catalog } from "@/types/course";
+import type { Catalog, CourseNodeData, CourseStatus } from "@/types/course";
 
 export interface DAGNode {
   id: string;
-  data: { label: string; title: string; type: string; completed: boolean };
+  type: "courseNode";
+  data: CourseNodeData;
   position: { x: number; y: number };
-  style?: Record<string, string | number>;
 }
 
 export interface DAGEdge {
   id: string;
   source: string;
   target: string;
-  animated?: boolean;
+  type: "smoothstep";
+  style?: Record<string, string | number>;
 }
 
 export interface DAGGraph {
@@ -20,94 +21,57 @@ export interface DAGGraph {
 }
 
 /**
- * Build a React Flow-compatible graph from the catalog's prerequisite
- * relationships. Nodes are laid out in topological "levels" based on the
- * longest prerequisite chain into that node, which produces a readable
- * left-to-right DAG without requiring a runtime layout engine.
+ * Build raw (un-laid-out) React Flow nodes and edges from the catalog.
  *
- * Optionally accepts the normalized codes of completed courses; matching nodes
- * are rendered with a soft "completed" green tint so transfer students and
- * returning students can see their progress on the graph.
+ * Each node uses the custom 'courseNode' type so CourseNode.tsx handles
+ * rendering. Status priority: completed > available > locked.
+ *
+ * Do NOT call dagre here — positioning is handled by lib/layoutGraph.ts so
+ * this function stays pure and testable.
  */
-export function buildDAG(catalog: Catalog, completedCodes: string[] = []): DAGGraph {
-  const courses = catalog.courses;
-  const codeToCourse = new Map(courses.map((c) => [c.code, c]));
+export function buildDAG(
+  catalog: Catalog,
+  completedCodes: string[] = [],
+  availableCodes: string[] = [],
+): DAGGraph {
   const completedSet = new Set(completedCodes);
+  const availableSet = new Set(availableCodes);
+  const catalogCodes = new Set(catalog.courses.map((c) => c.code));
 
-  const memo = new Map<string, number>();
-  function depth(code: string, stack: Set<string> = new Set()): number {
-    if (memo.has(code)) return memo.get(code)!;
-    if (stack.has(code)) return 0;
-    const course = codeToCourse.get(code);
-    if (!course || course.prerequisites.length === 0) {
-      memo.set(code, 0);
-      return 0;
+  const nodes: DAGNode[] = catalog.courses.map((course) => {
+    let status: CourseStatus;
+    if (completedSet.has(course.code)) {
+      status = "completed";
+    } else if (availableSet.has(course.code)) {
+      status = "available";
+    } else {
+      status = "locked";
     }
-    stack.add(code);
-    let max = 0;
-    for (const p of course.prerequisites) {
-      max = Math.max(max, depth(p, stack) + 1);
-    }
-    stack.delete(code);
-    memo.set(code, max);
-    return max;
-  }
 
-  const levelBuckets = new Map<number, string[]>();
-  for (const course of courses) {
-    const d = depth(course.code);
-    if (!levelBuckets.has(d)) levelBuckets.set(d, []);
-    levelBuckets.get(d)!.push(course.code);
-  }
-
-  const xSpacing = 240;
-  const ySpacing = 90;
-
-  const typeColor: Record<string, string> = {
-    required: "#0F172A",
-    choice: "#7C3AED",
-    elective: "#0EA5E9",
-  };
-
-  const nodes: DAGNode[] = [];
-  for (const [level, codes] of Array.from(levelBuckets.entries()).sort((a, b) => a[0] - b[0])) {
-    codes.sort();
-    codes.forEach((code, i) => {
-      const course = codeToCourse.get(code)!;
-      const isCompleted = completedSet.has(course.code);
-      nodes.push({
-        id: code,
-        data: {
-          label: code,
-          title: course.title,
-          type: course.type,
-          completed: isCompleted,
-        },
-        position: { x: level * xSpacing, y: i * ySpacing },
-        style: {
-          background: isCompleted ? "#dcfce7" : "#ffffff",
-          border: isCompleted
-            ? "2px solid #22c55e"
-            : `1px solid ${typeColor[course.type] ?? "#d1d5db"}`,
-          color: "#111827",
-          padding: 8,
-          borderRadius: 8,
-          fontSize: 12,
-          fontWeight: 600,
-          width: 170,
-        },
-      });
-    });
-  }
+    return {
+      id: course.code,
+      type: "courseNode",
+      data: {
+        code: course.code,
+        title: course.title,
+        credits: course.credits,
+        courseType: course.type,
+        status,
+      },
+      position: { x: 0, y: 0 },
+    };
+  });
 
   const edges: DAGEdge[] = [];
-  for (const course of courses) {
-    for (const p of course.prerequisites) {
-      if (!codeToCourse.has(p)) continue;
+  for (const course of catalog.courses) {
+    for (const prereq of course.prerequisites) {
+      if (!catalogCodes.has(prereq)) continue;
       edges.push({
-        id: `${p}->${course.code}`,
-        source: p,
+        id: `${prereq}->${course.code}`,
+        source: prereq,
         target: course.code,
+        type: "smoothstep",
+        style: { stroke: "#94a3b8", strokeWidth: 1.5 },
       });
     }
   }

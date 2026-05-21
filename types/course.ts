@@ -1,5 +1,17 @@
 export type CourseType = "required" | "choice" | "elective";
 
+/** Visual status of a course in the prerequisite DAG. */
+export type CourseStatus = "completed" | "available" | "locked";
+
+/** Data payload carried by each custom CourseNode in React Flow. */
+export interface CourseNodeData {
+  code: string;
+  title: string;
+  credits: number;
+  courseType: CourseType;
+  status: CourseStatus;
+}
+
 export interface Course {
   code: string;
   title: string;

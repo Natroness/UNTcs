@@ -2,7 +2,9 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { catalog } from "@/lib/catalog";
+import { checkPrerequisites } from "@/lib/prerequisiteChecker";
 import { buildDAG } from "@/lib/buildDAG";
+import { layoutGraph } from "@/lib/layoutGraph";
 import { CourseDAG } from "@/components/CourseDAG";
 import { loadCompletedCodes } from "@/lib/completedCoursesStore";
 
@@ -15,8 +17,16 @@ export default function DagPage() {
     setReady(true);
   }, []);
 
-  const graph = useMemo(() => buildDAG(catalog, completedCodes), [completedCodes]);
+  const graph = useMemo(() => {
+    const { available } = checkPrerequisites(catalog, completedCodes);
+    const rawGraph = buildDAG(catalog, completedCodes, available);
+    return layoutGraph(rawGraph.nodes, rawGraph.edges);
+  }, [completedCodes]);
+
   const completedCount = completedCodes.length;
+  const availableCount = graph.nodes.filter(
+    (n) => (n.data as { status?: string }).status === "available",
+  ).length;
 
   return (
     <div className="flex flex-col gap-4">
@@ -25,22 +35,15 @@ export default function DagPage() {
           <h1 className="text-2xl font-semibold tracking-tight text-slate-900">Prerequisite DAG</h1>
           <p className="text-sm text-slate-500">
             {graph.nodes.length} courses · {graph.edges.length} prerequisite edges
-            {ready && completedCount > 0 ? ` · ${completedCount} completed` : ""}. Drag, zoom, and pan.
+            {ready && completedCount > 0
+              ? ` · ${completedCount} completed · ${availableCount} available`
+              : ""}. Drag, zoom, and pan.
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-2 text-xs">
-          <span className="chip" style={{ borderColor: "#22c55e", background: "#dcfce7", color: "#166534" }}>
-            <span className="h-2 w-2 rounded-full" style={{ background: "#22c55e" }} /> completed
-          </span>
-          <span className="chip" style={{ borderColor: "#0F172A" }}>
-            <span className="h-2 w-2 rounded-full" style={{ background: "#0F172A" }} /> required
-          </span>
-          <span className="chip" style={{ borderColor: "#7C3AED" }}>
-            <span className="h-2 w-2 rounded-full" style={{ background: "#7C3AED" }} /> choice
-          </span>
-          <span className="chip" style={{ borderColor: "#0EA5E9" }}>
-            <span className="h-2 w-2 rounded-full" style={{ background: "#0EA5E9" }} /> elective
-          </span>
+          <LegendChip color="#22c55e" bg="#f0fdf4" border="#22c55e" label="completed" />
+          <LegendChip color="#3b82f6" bg="#eff6ff" border="#3b82f6" label="available" />
+          <LegendChip color="#6b7280" bg="#f9fafb" border="#d1d5db" label="locked" />
         </div>
       </div>
 
@@ -60,5 +63,30 @@ export default function DagPage() {
 
       <CourseDAG graph={graph} />
     </div>
+  );
+}
+
+function LegendChip({
+  color,
+  bg,
+  border,
+  label,
+}: {
+  color: string;
+  bg: string;
+  border: string;
+  label: string;
+}) {
+  return (
+    <span
+      className="chip"
+      style={{ borderColor: border, background: bg, color }}
+    >
+      <span
+        className="h-2 w-2 rounded-full"
+        style={{ background: color }}
+      />
+      {label}
+    </span>
   );
 }
