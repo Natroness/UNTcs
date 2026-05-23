@@ -14,18 +14,21 @@ const config: Config = {
           ink: "#0F172A",
           muted: "#64748B",
         },
+        landing: {
+          mint: "#ceffb8",
+          teal: "#3cffce",
+          mid: "#91f2cf",
+          dark: "#121212",
+          muted: "#84a5aa",
+          cream: "#fffcf6",
+        },
       },
       fontFamily: {
-        sans: [
-          "ui-sans-serif",
-          "system-ui",
-          "-apple-system",
-          "Segoe UI",
-          "Roboto",
-          "Helvetica",
-          "Arial",
-          "sans-serif",
-        ],
+        sans: ["var(--font-manrope)", "ui-sans-serif", "system-ui", "sans-serif"],
+      },
+      backgroundImage: {
+        "landing-hero": "linear-gradient(180deg, #ceffb8 0%, #91f2cf 59%, #3cffce 100%)",
+        "landing-soft": "linear-gradient(180deg, #e8fff0 0%, #f7fffb 100%)",
       },
       boxShadow: {
         card: "0 1px 2px rgba(15, 23, 42, 0.04), 0 4px 12px rgba(15, 23, 42, 0.06)",

@@ -29,20 +29,20 @@ export function CourseInput({ onSubmit, loading, error, initialValue }: Props) {
     <section className="card card-pad">
       <header className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h2 className="text-lg font-semibold tracking-tight">Enter your courses</h2>
-          <p className="text-sm text-slate-500">
+          <h2 className="text-lg font-semibold tracking-tight text-white">Enter your courses</h2>
+          <p className="text-sm text-white/50">
             Manual entry or paste transcript text. We will normalize and audit it.
           </p>
         </div>
-        <div className="inline-flex rounded-lg border border-slate-200 bg-slate-50 p-0.5 text-sm">
+        <div className="inline-flex rounded-lg border border-white/10 bg-white/5 p-0.5 text-sm">
           <button
             type="button"
             onClick={() => setMode("manual")}
             className={
               "rounded-md px-3 py-1.5 transition " +
               (mode === "manual"
-                ? "bg-white text-slate-900 shadow-sm"
-                : "text-slate-500 hover:text-slate-800")
+                ? "bg-white/10 text-white shadow-sm"
+                : "text-white/50 hover:text-white")
             }
           >
             Manual
@@ -53,8 +53,8 @@ export function CourseInput({ onSubmit, loading, error, initialValue }: Props) {
             className={
               "rounded-md px-3 py-1.5 transition " +
               (mode === "transcript"
-                ? "bg-white text-slate-900 shadow-sm"
-                : "text-slate-500 hover:text-slate-800")
+                ? "bg-white/10 text-white shadow-sm"
+                : "text-white/50 hover:text-white")
             }
           >
             Transcript text
@@ -67,26 +67,26 @@ export function CourseInput({ onSubmit, loading, error, initialValue }: Props) {
         onChange={(e) => setValue(e.target.value)}
         placeholder={placeholder}
         rows={mode === "transcript" ? 10 : 6}
-        className="w-full resize-y rounded-xl border border-slate-200 bg-white p-3 font-mono text-sm leading-6 outline-none transition focus:border-unt-green focus:ring-2 focus:ring-unt-green/20"
+        className="w-full resize-y rounded-xl border border-white/10 bg-[#1a1a1a] p-3 font-mono text-sm leading-6 text-white outline-none placeholder:text-white/25 transition focus:border-landing-teal/50 focus:ring-2 focus:ring-landing-teal/20"
       />
 
       {error ? (
-        <p className="mt-3 rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-sm text-rose-700">
+        <p className="mt-3 rounded-lg border border-rose-400/30 bg-rose-400/10 px-3 py-2 text-sm text-rose-300">
           {error}
         </p>
       ) : null}
 
       <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
-        <p className="text-xs text-slate-500">
+        <p className="text-xs text-white/40">
           Codes are normalized to <span className="font-mono">DEPT 1234</span>. Duplicates are removed.
         </p>
         <button
           type="button"
           disabled={loading || value.trim().length === 0}
           onClick={() => onSubmit({ mode, value })}
-          className="inline-flex items-center justify-center rounded-lg bg-unt-green px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
+          className="inline-flex items-center justify-center rounded-lg bg-landing-teal px-4 py-2 text-sm font-semibold text-black shadow-sm transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40"
         >
-          {loading ? "Auditing..." : mode === "manual" ? "Run audit" : "Parse and audit"}
+          {loading ? "Auditing…" : mode === "manual" ? "Run audit" : "Parse and audit"}
         </button>
       </div>
     </section>

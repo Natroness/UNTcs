@@ -108,14 +108,14 @@ function DashboardInner() {
   return (
     <div className="flex flex-col gap-6">
       <div>
-        <h1 className="text-2xl font-semibold tracking-tight text-slate-900">Audit dashboard</h1>
-        <p className="text-sm text-slate-500">
+        <h1 className="text-2xl font-semibold tracking-tight text-white">Audit dashboard</h1>
+        <p className="text-sm text-white/50">
           Enter your completed courses and get an instant degree audit.
         </p>
       </div>
 
       {fromTransfer && !bannerDismissed && transferDetail.length > 0 ? (
-        <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-900">
+        <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-emerald-400/30 bg-emerald-400/10 px-4 py-3 text-sm text-emerald-200">
           <span>
             Loaded <strong>{transferDetail.length}</strong> completed course
             {transferDetail.length === 1 ? "" : "s"} from your UNT degree audit
@@ -130,7 +130,7 @@ function DashboardInner() {
           <button
             type="button"
             onClick={() => setBannerDismissed(true)}
-            className="rounded-md px-2 py-1 text-xs font-medium text-emerald-800 hover:bg-emerald-100"
+            className="rounded-md px-2 py-1 text-xs font-medium text-emerald-300 hover:bg-emerald-400/10"
           >
             Dismiss
           </button>
@@ -160,11 +160,11 @@ function DashboardInner() {
           </div>
         </>
       ) : (
-        <section className="card card-pad text-sm text-slate-500">
+        <section className="card card-pad text-sm text-white/50">
           <p>
             Submit your courses above to see your degree progress, available next-term courses,
             and which classes are still locked. Transfer students can start at the{" "}
-            <a href="/transfer-audit" className="font-semibold text-unt-green hover:underline">
+            <a href="/transfer-audit" className="font-semibold text-landing-teal hover:underline">
               transfer audit page
             </a>{" "}
             instead.

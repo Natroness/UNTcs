@@ -3,43 +3,45 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 html,
 body {
-  background-color: #f8fafc;
-  color: #0f172a;
+  background-color: #121212;
+  color: #ffffff;
 }
 
 body {
   font-feature-settings: "ss01", "cv11";
 }
 
+/* ── Dark-themed card ─────────────────────────────────── */
 .card {
-  @apply rounded-2xl border border-slate-200 bg-white shadow-card;
+  @apply rounded-2xl border border-white/10 bg-white/5;
 }
 
 .card-pad {
   @apply p-5 sm:p-6;
 }
 
+/* ── Chips ────────────────────────────────────────────── */
 .chip {
-  @apply inline-flex items-center gap-1 rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-xs font-medium text-slate-700;
+  @apply inline-flex items-center gap-1 rounded-full border border-white/15 bg-white/5 px-2.5 py-1 text-xs font-medium text-white/70;
 }
 
 .chip-green {
-  @apply border-emerald-200 bg-emerald-50 text-emerald-700;
+  @apply border-emerald-400/30 bg-emerald-400/10 text-emerald-300;
 }
 
 .chip-amber {
-  @apply border-amber-200 bg-amber-50 text-amber-800;
+  @apply border-amber-400/30 bg-amber-400/10 text-amber-300;
 }
 
 .chip-red {
-  @apply border-rose-200 bg-rose-50 text-rose-700;
+  @apply border-rose-400/30 bg-rose-400/10 text-rose-300;
 }
 
 .chip-blue {
-  @apply border-sky-200 bg-sky-50 text-sky-700;
+  @apply border-sky-400/30 bg-sky-400/10 text-sky-300;
 }

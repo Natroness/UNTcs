@@ -32,8 +32,8 @@ export default function DagPage() {
     <div className="flex flex-col gap-4">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-semibold tracking-tight text-slate-900">Prerequisite DAG</h1>
-          <p className="text-sm text-slate-500">
+          <h1 className="text-2xl font-semibold tracking-tight text-white">Prerequisite DAG</h1>
+          <p className="text-sm text-white/50">
             {graph.nodes.length} courses · {graph.edges.length} prerequisite edges
             {ready && completedCount > 0
               ? ` · ${completedCount} completed · ${availableCount} available`
@@ -41,20 +41,20 @@ export default function DagPage() {
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-2 text-xs">
-          <LegendChip color="#22c55e" bg="#f0fdf4" border="#22c55e" label="completed" />
-          <LegendChip color="#3b82f6" bg="#eff6ff" border="#3b82f6" label="available" />
-          <LegendChip color="#6b7280" bg="#f9fafb" border="#d1d5db" label="locked" />
+          <LegendChip color="#34d399" bg="rgba(52,211,153,0.1)" border="rgba(52,211,153,0.4)" label="completed" />
+          <LegendChip color="#38bdf8" bg="rgba(56,189,248,0.1)" border="rgba(56,189,248,0.4)" label="available" />
+          <LegendChip color="rgba(255,255,255,0.5)" bg="rgba(255,255,255,0.05)" border="rgba(255,255,255,0.15)" label="locked" />
         </div>
       </div>
 
       {ready && completedCount === 0 ? (
-        <div className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs text-slate-600">
+        <div className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-xs text-white/50">
           No completed courses loaded. Run an audit on the{" "}
-          <a className="font-semibold text-unt-green hover:underline" href="/dashboard">
+          <a className="font-semibold text-landing-teal hover:underline" href="/dashboard">
             dashboard
           </a>{" "}
           or paste your{" "}
-          <a className="font-semibold text-unt-green hover:underline" href="/transfer-audit">
+          <a className="font-semibold text-landing-teal hover:underline" href="/transfer-audit">
             UNT degree audit
           </a>{" "}
           to color completed nodes green.
@@ -79,13 +79,10 @@ function LegendChip({
 }) {
   return (
     <span
-      className="chip"
+      className="inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-xs font-medium"
       style={{ borderColor: border, background: bg, color }}
     >
-      <span
-        className="h-2 w-2 rounded-full"
-        style={{ background: color }}
-      />
+      <span className="h-2 w-2 rounded-full" style={{ background: color }} />
       {label}
     </span>
   );
