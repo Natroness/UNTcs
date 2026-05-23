@@ -16,18 +16,27 @@ body {
   font-feature-settings: "ss01", "cv11";
 }
 
-/* ── Dark-themed card ─────────────────────────────────── */
+/* ── Figma-style glow card ───────────────────────────── */
 .card {
-  @apply rounded-2xl border border-white/10 bg-white/5;
+  @apply rounded-2xl border border-white/15 bg-gradient-to-b from-[rgba(28,232,171,0.08)] to-transparent;
 }
 
 .card-pad {
   @apply p-5 sm:p-6;
 }
 
+/* ── Figma-style section heading ─────────────────────── */
+.section-title {
+  @apply text-3xl font-bold tracking-[-0.02em] text-white sm:text-4xl;
+}
+
+.section-sub {
+  @apply mt-3 text-base leading-relaxed text-[#84a5aa] sm:text-lg;
+}
+
 /* ── Chips ────────────────────────────────────────────── */
 .chip {
-  @apply inline-flex items-center gap-1 rounded-full border border-white/15 bg-white/5 px-2.5 py-1 text-xs font-medium text-white/70;
+  @apply inline-flex items-center gap-1 rounded-full border border-white/15 bg-white/5 px-2.5 py-1 text-xs font-semibold text-white/70;
 }
 
 .chip-green {

@@ -6,20 +6,19 @@ export const metadata = {
 
 export default function TransferAuditPage() {
   return (
-    <div className="flex flex-col gap-6">
-      <header>
-        <span className="chip chip-blue">Phase 7 · Transfer Student Support</span>
-        <h1 className="mt-3 text-2xl font-semibold tracking-tight text-white">
-          Upload your UNT degree audit
-        </h1>
-        <p className="mt-1 max-w-3xl text-sm text-white/50">
+    <div className="flex flex-col gap-14">
+      {/* Page header — Figma section title style */}
+      <div>
+        <span className="chip chip-blue mb-4 inline-flex">Phase 7 · Transfer Student Support</span>
+        <h1 className="section-title">Upload your UNT degree audit</h1>
+        <p className="section-sub max-w-3xl">
           Transfer students should paste their official UNT degree audit, not just a community
           college transcript. The UNT audit decides which transferred courses satisfy UNT
-          equivalents like <span className="font-mono text-white/70">CSCE 1030</span> or{" "}
-          <span className="font-mono text-white/70">MATH 1710</span>. The parser only marks a UNT
-          course completed when the audit explicitly says so.
+          equivalents like{" "}
+          <span className="font-mono text-white/60">CSCE 1030</span> or{" "}
+          <span className="font-mono text-white/60">MATH 1710</span>.
         </p>
-      </header>
+      </div>
 
       <TransferAuditUpload />
     </div>

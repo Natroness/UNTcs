@@ -29,26 +29,45 @@ export default function DagPage() {
   ).length;
 
   return (
-    <div className="flex flex-col gap-4">
-      <div className="flex flex-wrap items-end justify-between gap-3">
+    <div className="flex flex-col gap-10">
+      {/* Page header — Figma section title style */}
+      <div className="flex flex-wrap items-end justify-between gap-5">
         <div>
-          <h1 className="text-2xl font-semibold tracking-tight text-white">Prerequisite DAG</h1>
-          <p className="text-sm text-white/50">
+          <h1 className="section-title">Prerequisite DAG</h1>
+          <p className="section-sub">
             {graph.nodes.length} courses · {graph.edges.length} prerequisite edges
             {ready && completedCount > 0
               ? ` · ${completedCount} completed · ${availableCount} available`
-              : ""}. Drag, zoom, and pan.
+              : ""}
+            . Drag, zoom, and pan.
           </p>
         </div>
-        <div className="flex flex-wrap items-center gap-2 text-xs">
-          <LegendChip color="#34d399" bg="rgba(52,211,153,0.1)" border="rgba(52,211,153,0.4)" label="completed" />
-          <LegendChip color="#38bdf8" bg="rgba(56,189,248,0.1)" border="rgba(56,189,248,0.4)" label="available" />
-          <LegendChip color="rgba(255,255,255,0.5)" bg="rgba(255,255,255,0.05)" border="rgba(255,255,255,0.15)" label="locked" />
+
+        {/* Legend chips — Figma badge style */}
+        <div className="flex flex-wrap items-center gap-2">
+          <LegendChip
+            color="#34d399"
+            bg="rgba(52,211,153,0.1)"
+            border="rgba(52,211,153,0.4)"
+            label="completed"
+          />
+          <LegendChip
+            color="#38bdf8"
+            bg="rgba(56,189,248,0.1)"
+            border="rgba(56,189,248,0.4)"
+            label="available"
+          />
+          <LegendChip
+            color="rgba(255,255,255,0.5)"
+            bg="rgba(255,255,255,0.05)"
+            border="rgba(255,255,255,0.15)"
+            label="locked"
+          />
         </div>
       </div>
 
       {ready && completedCount === 0 ? (
-        <div className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-xs text-white/50">
+        <div className="rounded-2xl border border-white/15 bg-gradient-to-b from-[rgba(28,232,171,0.06)] to-transparent px-5 py-4 text-sm text-[#84a5aa]">
           No completed courses loaded. Run an audit on the{" "}
           <a className="font-semibold text-landing-teal hover:underline" href="/dashboard">
             dashboard
@@ -67,10 +86,7 @@ export default function DagPage() {
 }
 
 function LegendChip({
-  color,
-  bg,
-  border,
-  label,
+  color, bg, border, label,
 }: {
   color: string;
   bg: string;
@@ -79,7 +95,7 @@ function LegendChip({
 }) {
   return (
     <span
-      className="inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-xs font-medium"
+      className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-semibold"
       style={{ borderColor: border, background: bg, color }}
     >
       <span className="h-2 w-2 rounded-full" style={{ background: color }} />

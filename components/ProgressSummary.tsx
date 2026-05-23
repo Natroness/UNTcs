@@ -8,48 +8,54 @@ export function ProgressSummary({ audit }: Props) {
   const { progress, available, locked, electives } = audit;
 
   return (
-    <section className="card card-pad">
-      <header className="mb-4 flex items-end justify-between">
-        <div>
-          <h3 className="text-base font-semibold tracking-tight text-white">Degree progress</h3>
-          <p className="text-sm text-white/50">Required courses only.</p>
-        </div>
-        <div className="text-right">
-          <div className="text-3xl font-semibold tabular-nums tracking-tight text-landing-teal">
-            {progress.percent}%
+    <div className="flex flex-col gap-5">
+      {/* Big progress card — Figma "results" style */}
+      <div className="rounded-2xl border border-white/15 bg-gradient-to-b from-emerald-400/10 to-transparent p-6 sm:p-8">
+        <div className="mb-5 flex items-end justify-between gap-4">
+          <div>
+            <p className="text-sm font-medium text-[#84a5aa]">Degree progress</p>
+            <p className="mt-1 text-5xl font-bold tabular-nums tracking-tight text-white">
+              {progress.percent}%
+            </p>
+            <p className="mt-1 text-xs text-[#84a5aa]">
+              {progress.completedRequired} / {progress.totalRequired} required courses
+            </p>
           </div>
-          <div className="text-xs text-white/40">
-            {progress.completedRequired} / {progress.totalRequired} required
-          </div>
+          <span className="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-xs font-semibold text-emerald-300">
+            Live audit
+          </span>
         </div>
-      </header>
 
-      <div
-        className="h-2 w-full overflow-hidden rounded-full bg-white/10"
-        role="progressbar"
-        aria-valuenow={progress.percent}
-        aria-valuemin={0}
-        aria-valuemax={100}
-      >
+        {/* Progress bar */}
         <div
-          className="h-full rounded-full bg-landing-teal transition-all"
-          style={{ width: `${progress.percent}%` }}
-        />
+          className="h-2 w-full overflow-hidden rounded-full bg-white/10"
+          role="progressbar"
+          aria-valuenow={progress.percent}
+          aria-valuemin={0}
+          aria-valuemax={100}
+        >
+          <div
+            className="h-full rounded-full bg-landing-teal transition-all duration-500"
+            style={{ width: `${progress.percent}%` }}
+          />
+        </div>
+
+        {/* Stat pills — Figma StatPill style */}
+        <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+          <StatPill label="Completed" value={progress.completedRequired} tone="green" />
+          <StatPill label="Remaining" value={progress.totalRequired - progress.completedRequired} tone="amber" />
+          <StatPill label="Available" value={available.length} tone="blue" />
+          <StatPill label="Locked" value={locked.length} tone="red" />
+        </div>
       </div>
 
-      <dl className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4">
-        <Stat label="Completed" value={progress.completedRequired} tone="green" />
-        <Stat label="Remaining" value={progress.totalRequired - progress.completedRequired} tone="amber" />
-        <Stat label="Available" value={available.length} tone="blue" />
-        <Stat label="Locked" value={locked.length} tone="red" />
-      </dl>
-
+      {/* Electives */}
       {electives.length > 0 ? (
-        <div className="mt-5 border-t border-white/10 pt-4">
-          <h4 className="mb-2 text-xs font-medium uppercase tracking-wide text-white/40">
-            Electives
+        <div className="card card-pad">
+          <h4 className="mb-4 text-sm font-semibold uppercase tracking-widest text-[#84a5aa]">
+            Elective Groups
           </h4>
-          <ul className="space-y-2">
+          <ul className="space-y-4">
             {electives.map((e) => {
               const pct =
                 e.requiredCredits === 0
@@ -58,15 +64,15 @@ export function ProgressSummary({ audit }: Props) {
               return (
                 <li key={e.id}>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="font-medium text-white">{e.title}</span>
-                    <span className="tabular-nums text-white/40">
+                    <span className="font-semibold text-white">{e.title}</span>
+                    <span className="tabular-nums text-[#84a5aa]">
                       {e.earnedCredits} / {e.requiredCredits} cr
                     </span>
                   </div>
-                  <div className="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-white/10">
+                  <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-white/10">
                     <div
-                      className={`h-full rounded-full ${
-                        e.satisfied ? "bg-emerald-400" : "bg-sky-400"
+                      className={`h-full rounded-full transition-all ${
+                        e.satisfied ? "bg-landing-teal" : "bg-sky-400"
                       }`}
                       style={{ width: `${pct}%` }}
                     />
@@ -77,11 +83,11 @@ export function ProgressSummary({ audit }: Props) {
           </ul>
         </div>
       ) : null}
-    </section>
+    </div>
   );
 }
 
-function Stat({
+function StatPill({
   label,
   value,
   tone,
@@ -90,16 +96,16 @@ function Stat({
   value: number;
   tone: "green" | "amber" | "blue" | "red";
 }) {
-  const toneClasses: Record<typeof tone, string> = {
-    green: "text-emerald-300 bg-emerald-400/10 border-emerald-400/20",
-    amber: "text-amber-300 bg-amber-400/10 border-amber-400/20",
-    blue: "text-sky-300 bg-sky-400/10 border-sky-400/20",
-    red: "text-rose-300 bg-rose-400/10 border-rose-400/20",
+  const cls: Record<typeof tone, string> = {
+    green: "border-emerald-400/20 bg-emerald-400/10 text-emerald-300",
+    amber: "border-amber-400/20 bg-amber-400/10 text-amber-300",
+    blue: "border-sky-400/20 bg-sky-400/10 text-sky-300",
+    red: "border-rose-400/20 bg-rose-400/10 text-rose-300",
   };
   return (
-    <div className={`rounded-xl border px-3 py-2.5 ${toneClasses[tone]}`}>
-      <dt className="text-xs font-medium uppercase tracking-wide opacity-70">{label}</dt>
-      <dd className="text-xl font-semibold tabular-nums">{value}</dd>
+    <div className={`rounded-xl border px-4 py-3 ${cls[tone]}`}>
+      <p className="text-xs font-semibold uppercase tracking-wide opacity-70">{label}</p>
+      <p className="mt-1 text-2xl font-bold tabular-nums">{value}</p>
     </div>
   );
 }
