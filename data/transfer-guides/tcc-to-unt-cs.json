@@ -1,0 +1,37 @@
+{
+  "school": "TCC",
+  "target": "UNT CS",
+  "description": "Tarrant County College → UNT B.S. Computer Science transfer pathway using Texas Common Course Numbering System (TCCNS) equivalencies.",
+  "years": [
+    {
+      "year": 1,
+      "fall": [
+        { "unt": "MATH 1710", "tccns": ["MATH 2413"], "note": "Calculus I" },
+        { "unt": "CSCE 1030", "tccns": ["COSC 1436"], "note": "Intro to Programming" },
+        { "unt": "ENGL 1310", "tccns": ["ENGL 1301"], "note": "College Writing I" },
+        { "unt": "PHYS 1710", "tccns": ["PHYS 2425"], "note": "Calculus-based Physics I" },
+        { "unt": "PHYS 1730", "tccns": ["PHYS 2125"], "note": "Physics I Lab" }
+      ],
+      "spring": [
+        { "unt": "MATH 1720", "tccns": ["MATH 2414"], "note": "Calculus II" },
+        { "unt": "CSCE 1040", "tccns": ["COSC 1437"], "note": "Programming with Objects" },
+        { "unt": "ENGL 1320", "tccns": ["ENGL 1302"], "note": "College Writing II" },
+        { "unt": "PHYS 2220", "tccns": ["PHYS 2426"], "note": "Electricity & Magnetism" },
+        { "unt": "PHYS 2240", "tccns": ["PHYS 2126"], "note": "Physics II Lab" }
+      ]
+    },
+    {
+      "year": 2,
+      "fall": [
+        { "unt": "MATH 2700", "tccns": ["MATH 2318"], "note": "Linear Algebra" },
+        { "unt": "CSCE 2100", "tccns": [],             "note": "Take at UNT — no TCCNS equivalent" },
+        { "unt": "CSCE 2110", "tccns": [],             "note": "Take at UNT after CSCE 1040 + CSCE 2100" },
+        { "unt": "MATH 3680", "tccns": [],             "note": "Take at UNT — check for MATH 1342 partial credit" }
+      ],
+      "spring": [
+        { "unt": "CSCE 2610", "tccns": [],   "note": "Take at UNT after CSCE 1040" },
+        { "unt": "TECM 2700", "tccns": [],   "note": "Take at UNT after ENGL 1320" }
+      ]
+    }
+  ]
+}

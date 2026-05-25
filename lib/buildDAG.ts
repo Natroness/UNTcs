@@ -33,6 +33,8 @@ export function buildDAG(
   catalog: Catalog,
   completedCodes: string[] = [],
   availableCodes: string[] = [],
+  /** UNT codes that were satisfied via a transfer equivalent (shown with purple badge). */
+  transferCodes: ReadonlySet<string> = new Set(),
 ): DAGGraph {
   const completedSet = new Set(completedCodes);
   const availableSet = new Set(availableCodes);
@@ -57,6 +59,7 @@ export function buildDAG(
         credits: course.credits,
         courseType: course.type,
         status,
+        isTransfer: status === "completed" && transferCodes.has(course.code),
       },
       position: { x: 0, y: 0 },
     };
@@ -71,7 +74,7 @@ export function buildDAG(
         source: prereq,
         target: course.code,
         type: "smoothstep",
-        style: { stroke: "#94a3b8", strokeWidth: 1.5 },
+        style: { stroke: "rgba(255,255,255,0.18)", strokeWidth: 1.5 },
       });
     }
   }
