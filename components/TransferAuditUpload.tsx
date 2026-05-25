@@ -13,7 +13,12 @@ CSCE 1040  COMPUTER SCIENCE II           NEEDS:  3.0 Hours
 MATH 1710  CALCULUS I                    SATISFIED BY  HCC MATH 2413  TR
 CSCE 2110  FOUNDATIONS OF DATA STRUCT    NOT SATISFIED`;
 
-export function TransferAuditUpload() {
+interface UploadProps {
+  /** Override the default router.push behaviour (used on single-scroll homepage) */
+  onSendToDashboard?: () => void;
+}
+
+export function TransferAuditUpload({ onSendToDashboard }: UploadProps = {}) {
   const router = useRouter();
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
@@ -65,8 +70,12 @@ export function TransferAuditUpload() {
     if (!result) return;
     saveCompletedCodes(result.matchedCatalogCourses);
     saveCompletedDetailed(result.completed);
-    router.push("/dashboard?source=transfer");
-  }, [result, router]);
+    if (onSendToDashboard) {
+      onSendToDashboard();
+    } else {
+      router.push("/dashboard?source=transfer");
+    }
+  }, [result, router, onSendToDashboard]);
 
   return (
     <div className="flex flex-col gap-6">

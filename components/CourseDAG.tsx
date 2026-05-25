@@ -19,7 +19,7 @@ interface Props {
 
 export function CourseDAG({ graph }: Props) {
   return (
-    <div className="h-[750px] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 shadow-card">
+    <div className="h-[780px] w-full overflow-hidden rounded-2xl border border-white/12 bg-[#0a0a0a]">
       <ReactFlow
         nodes={graph.nodes as Node[]}
         edges={graph.edges as Edge[]}
@@ -30,22 +30,22 @@ export function CourseDAG({ graph }: Props) {
         nodesDraggable
         nodesConnectable={false}
         elementsSelectable
-        minZoom={0.2}
+        minZoom={0.15}
         maxZoom={2}
       >
-        <Background gap={28} color="#e2e8f0" />
+        <Background gap={28} color="rgba(255,255,255,0.04)" />
         <MiniMap
           pannable
           zoomable
           nodeColor={(n) => {
             const status = (n.data as { status?: string }).status;
-            if (status === "completed") return "#22c55e";
-            if (status === "available") return "#3b82f6";
-            return "#d1d5db";
+            if (status === "completed") return "#34d399";
+            if (status === "available") return "#2fffd0";
+            return "rgba(255,255,255,0.15)";
           }}
-          className="!bg-white"
+          style={{ background: "rgba(255,255,255,0.04)", borderColor: "rgba(255,255,255,0.1)" }}
         />
-        <Controls showInteractive={false} />
+        <Controls showInteractive={false} style={{ background: "rgba(255,255,255,0.05)", borderColor: "rgba(255,255,255,0.1)" }} />
       </ReactFlow>
     </div>
   );

@@ -16,9 +16,9 @@ const config: Config = {
         },
         landing: {
           mint: "#ceffb8",
-          teal: "#3cffce",
+          teal: "#2fffd0",
           mid: "#91f2cf",
-          dark: "#121212",
+          dark: "#0f0f0f",
           muted: "#84a5aa",
           cream: "#fffcf6",
         },
