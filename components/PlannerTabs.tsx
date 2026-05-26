@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { CourseDAG } from "@/components/CourseDAG";
+import { CourseRoadmapDiagram } from "@/components/CourseRoadmapDiagram";
 import { TransferRoadmap } from "@/components/TransferRoadmap";
 import { buildRoadmap, roadmapStats } from "@/lib/roadmapBuilder";
 import { checkPrerequisites } from "@/lib/prerequisiteChecker";
@@ -10,10 +11,11 @@ import tccGuide from "@/data/transfer-guides/tcc-to-unt-cs.json";
 import type { TransferGuide } from "@/lib/transferEquivalency";
 import type { DAGGraph } from "@/lib/buildDAG";
 
-type Tab = "dag" | "roadmap" | "transfer";
+type Tab = "dag" | "map" | "roadmap" | "transfer";
 
 const TABS: { id: Tab; label: string }[] = [
   { id: "dag",      label: "DAG View" },
+  { id: "map",      label: "Degree Map" },
   { id: "roadmap",  label: "Roadmap" },
   { id: "transfer", label: "Transfer Guide" },
 ];
@@ -63,6 +65,14 @@ export function PlannerTabs({ graph, completedCodes }: Props) {
 
       {/* DAG View */}
       {active === "dag" && <CourseDAG graph={graph} />}
+
+      {/* Degree Map View */}
+      {active === "map" && (
+        <CourseRoadmapDiagram
+          completedCodes={completedCodes}
+          availableCodes={available}
+        />
+      )}
 
       {/* Roadmap View */}
       {active === "roadmap" && (
