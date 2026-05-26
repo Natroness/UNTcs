@@ -74,10 +74,27 @@ export function buildDAG(
         source: prereq,
         target: course.code,
         type: "smoothstep",
-        style: { stroke: "rgba(255,255,255,0.18)", strokeWidth: 1.5 },
+        style: {
+          stroke: deptEdgeColor(prereq),
+          strokeWidth: 1.8,
+          opacity: 0.75,
+        },
       });
     }
   }
 
   return { nodes, edges };
+}
+
+/** Color edges by the source node's department for easy path tracing. */
+function deptEdgeColor(sourceCode: string): string {
+  const dept = sourceCode.split(" ")[0];
+  switch (dept) {
+    case "CSCE": return "#2fffd0"; // mint — core CS chain
+    case "MATH": return "#60a5fa"; // blue — math chain
+    case "EENG": return "#fbbf24"; // amber — hardware chain
+    case "ENGL":
+    case "TECM": return "#f97316"; // orange — writing chain
+    default:     return "rgba(255,255,255,0.25)";
+  }
 }

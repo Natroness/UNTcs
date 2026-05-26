@@ -10,7 +10,7 @@ import ReactFlow, {
 import "reactflow/dist/style.css";
 import CourseNode from "@/components/CourseNode";
 import type { DAGGraph } from "@/lib/buildDAG";
-import { compactLayerLayout } from "@/lib/compactLayerLayout";
+import { svgPositionLayout } from "@/lib/svgLayout";
 import { useMemo } from "react";
 
 const nodeTypes = { courseNode: CourseNode };
@@ -22,7 +22,7 @@ interface Props {
 export function CourseDAG({ graph }: Props) {
   // Apply compact layout at render time so the section component stays simple
   const { nodes, edges } = useMemo(
-    () => compactLayerLayout(graph.nodes, graph.edges),
+    () => svgPositionLayout(graph.nodes, graph.edges),
     [graph],
   );
 

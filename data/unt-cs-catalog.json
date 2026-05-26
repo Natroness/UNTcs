@@ -2,358 +2,73 @@
   "meta": {
     "program": "B.S. in Computer Science",
     "catalogYear": "2024-2025",
-    "notes": "Simplified UNT CSE department catalog used for the MVP audit. Verify with the official UNT catalog before academic decisions."
+    "notes": "UNT CSE department catalog sourced from official degree plan. Verify with the official UNT catalog and your academic advisor."
   },
   "courses": [
-    {
-      "code": "CSCE 1030",
-      "title": "Computer Science I",
-      "credits": 3,
-      "type": "required",
-      "prerequisites": [],
-      "corequisites": [],
-      "description": "Introduction to programming and problem solving."
-    },
-    {
-      "code": "CSCE 1040",
-      "title": "Computer Science II",
-      "credits": 3,
-      "type": "required",
-      "prerequisites": ["CSCE 1030"],
-      "corequisites": [],
-      "description": "Object-oriented design, recursion, and abstract data types."
-    },
-    {
-      "code": "CSCE 2100",
-      "title": "Foundations of Computing",
-      "credits": 3,
-      "type": "required",
-      "prerequisites": ["CSCE 1030", "MATH 1710"],
-      "corequisites": [],
-      "description": "Discrete structures for computer science."
-    },
-    {
-      "code": "CSCE 2110",
-      "title": "Foundations of Data Structures",
-      "credits": 3,
-      "type": "required",
-      "prerequisites": ["CSCE 1040", "CSCE 2100"],
-      "corequisites": [],
-      "description": "Lists, trees, graphs, hashing, and complexity."
-    },
-    {
-      "code": "CSCE 2610",
-      "title": "Assembly Language and Computer Organization",
-      "credits": 3,
-      "type": "required",
-      "prerequisites": ["CSCE 1040"],
-      "corequisites": [],
-      "description": "Low-level machine architecture and assembly programming."
-    },
-    {
-      "code": "CSCE 3055",
-      "title": "Software Engineering I",
-      "credits": 3,
-      "type": "required",
-      "prerequisites": ["CSCE 2110"],
-      "corequisites": [],
-      "description": "Requirements, design, and team-based software development."
-    },
-    {
-      "code": "CSCE 3110",
-      "title": "Data Structures and Algorithms",
-      "credits": 3,
-      "type": "required",
-      "prerequisites": ["CSCE 2110", "MATH 1710"],
-      "corequisites": [],
-      "description": "Advanced data structures, algorithm design, and analysis."
-    },
-    {
-      "code": "CSCE 3600",
-      "title": "Principles of Systems Programming",
-      "credits": 3,
-      "type": "required",
-      "prerequisites": ["CSCE 2610"],
-      "corequisites": [],
-      "description": "Unix systems programming and concurrency."
-    },
-    {
-      "code": "CSCE 4010",
-      "title": "Special Topics in Computer Science",
-      "credits": 3,
-      "type": "elective",
-      "prerequisites": ["CSCE 3110"],
-      "corequisites": [],
-      "description": "Advanced selected topics in computer science."
-    },
-    {
-      "code": "CSCE 4110",
-      "title": "Algorithms",
-      "credits": 3,
-      "type": "required",
-      "prerequisites": ["CSCE 3110"],
-      "corequisites": [],
-      "description": "Algorithm design paradigms and complexity classes."
-    },
-    {
-      "code": "CSCE 4140",
-      "title": "Automata and Formal Languages",
-      "credits": 3,
-      "type": "required",
-      "prerequisites": ["CSCE 2100", "CSCE 2110"],
-      "corequisites": [],
-      "description": "Regular and context-free languages, Turing machines."
-    },
-    {
-      "code": "CSCE 4444",
-      "title": "Software Engineering",
-      "credits": 3,
-      "type": "required",
-      "prerequisites": ["CSCE 3110"],
-      "corequisites": [],
-      "description": "Large software system design and engineering processes."
-    },
-    {
-      "code": "CSCE 4600",
-      "title": "Operating Systems Design",
-      "credits": 3,
-      "type": "required",
-      "prerequisites": ["CSCE 3110", "CSCE 3600"],
-      "corequisites": [],
-      "description": "Process management, memory, file systems, and scheduling."
-    },
-    {
-      "code": "CSCE 4901",
-      "title": "Senior Design Project I",
-      "credits": 3,
-      "type": "required",
-      "prerequisites": ["CSCE 3055", "CSCE 3110"],
-      "corequisites": [],
-      "description": "First half of the senior capstone project."
-    },
-    {
-      "code": "CSCE 4910",
-      "title": "Senior Design Project II",
-      "credits": 3,
-      "type": "required",
-      "prerequisites": ["CSCE 4901"],
-      "corequisites": [],
-      "description": "Capstone completion and presentation."
-    },
 
-    {
-      "code": "MATH 1710",
-      "title": "Calculus I",
-      "credits": 4,
-      "type": "required",
-      "prerequisites": [],
-      "corequisites": [],
-      "description": "Limits, derivatives, and integrals of one-variable functions."
-    },
-    {
-      "code": "MATH 1720",
-      "title": "Calculus II",
-      "credits": 3,
-      "type": "required",
-      "prerequisites": ["MATH 1710"],
-      "corequisites": [],
-      "description": "Integration techniques, sequences, and series."
-    },
-    {
-      "code": "MATH 2700",
-      "title": "Linear Algebra and Vector Geometry",
-      "credits": 3,
-      "type": "required",
-      "prerequisites": ["MATH 1710"],
-      "corequisites": [],
-      "description": "Matrices, vector spaces, and linear transformations."
-    },
-    {
-      "code": "MATH 3680",
-      "title": "Applied Statistics",
-      "credits": 3,
-      "type": "required",
-      "prerequisites": ["MATH 1710"],
-      "corequisites": [],
-      "description": "Probability, descriptive and inferential statistics."
-    },
+    { "code": "CSCE 1010", "title": "Discovering Computer Science",     "credits": 3, "type": "required",  "prerequisites": [],                               "corequisites": [],              "description": "Survey of CS fields and career paths. Entry point for the major." },
+    { "code": "CSCE 1015", "title": "Computing Tools and Techniques Lab","credits": 1, "type": "required",  "prerequisites": [],                               "corequisites": ["CSCE 1030"],   "description": "Lab companion to CSCE 1030. Must be taken concurrently." },
+    { "code": "CSCE 1030", "title": "Computer Science I",                "credits": 3, "type": "required",  "prerequisites": ["CSCE 1010", "MATH 1710"],        "corequisites": ["CSCE 1015"],   "description": "Introduction to programming and problem solving. Prereqs: CSCE 1010 and (MATH 1100 or MATH 1650 or MATH 1710)." },
+    { "code": "CSCE 1040", "title": "Computer Science II",               "credits": 3, "type": "required",  "prerequisites": ["CSCE 1030"],                    "corequisites": [],              "description": "Object-oriented programming, recursion, and abstract data types." },
+    { "code": "CSCE 2100", "title": "Foundations of Computing",          "credits": 3, "type": "required",  "prerequisites": ["CSCE 1040"],                    "corequisites": ["MATH 1710"],   "description": "Discrete structures for computer science. Prereq: CSCE 1040 (or CSCE 1045); co-req: MATH 1710." },
+    { "code": "CSCE 2110", "title": "Foundations of Data Structures",    "credits": 3, "type": "required",  "prerequisites": ["CSCE 1040"],                    "corequisites": ["CSCE 2100"],   "description": "Lists, trees, graphs, hashing, and complexity. Taken concurrently with CSCE 2100." },
+    { "code": "CSCE 2610", "title": "Assembly Language and Computer Organization","credits": 3, "type": "required", "prerequisites": ["CSCE 2100"],            "corequisites": ["EENG 2710"],   "description": "Low-level machine architecture and assembly programming. Co-req: EENG 2710." },
+    { "code": "CSCE 3444", "title": "Software Engineering",              "credits": 3, "type": "required",  "prerequisites": ["CSCE 2110"],                    "corequisites": [],              "description": "Requirements, design, and team-based software development." },
+    { "code": "CSCE 3550", "title": "Foundations of Cybersecurity",      "credits": 3, "type": "required",  "prerequisites": [],                               "corequisites": ["CSCE 2110"],   "description": "Core security principles. No hard prereq; taken concurrently with CSCE 2110 or later." },
+    { "code": "CSCE 3600", "title": "Principles of Systems Programming", "credits": 3, "type": "required",  "prerequisites": ["CSCE 2100", "CSCE 2110"],       "corequisites": [],              "description": "Unix systems programming and concurrency." },
+    { "code": "CSCE 4010", "title": "Social Issues in Computing",        "credits": 3, "type": "required",  "prerequisites": ["CSCE 3600"],                    "corequisites": [],              "description": "Ethics, legal, and societal issues in computer science." },
+    { "code": "CSCE 4110", "title": "Algorithms",                        "credits": 3, "type": "required",  "prerequisites": ["CSCE 2110"],                    "corequisites": [],              "description": "Algorithm design paradigms, correctness, and complexity analysis." },
+    { "code": "CSCE 4901", "title": "Software Development Capstone I",   "credits": 3, "type": "required",  "prerequisites": ["CSCE 3444", "TECM 2700"],        "corequisites": [],              "description": "First half of the senior capstone project." },
+    { "code": "CSCE 4902", "title": "Software Development Capstone II",  "credits": 3, "type": "required",  "prerequisites": ["CSCE 4901"],                    "corequisites": [],              "description": "Capstone completion and final presentation." },
 
-    {
-      "code": "PHYS 1710",
-      "title": "Mechanics",
-      "credits": 3,
-      "type": "required",
-      "prerequisites": [],
-      "corequisites": ["MATH 1710", "PHYS 1730"],
-      "description": "Calculus-based introductory mechanics."
-    },
-    {
-      "code": "PHYS 1730",
-      "title": "Laboratory in Mechanics",
-      "credits": 1,
-      "type": "required",
-      "prerequisites": [],
-      "corequisites": ["PHYS 1710"],
-      "description": "Lab companion to PHYS 1710."
-    },
-    {
-      "code": "PHYS 2220",
-      "title": "Electricity and Magnetism",
-      "credits": 3,
-      "type": "required",
-      "prerequisites": ["PHYS 1710", "MATH 1720"],
-      "corequisites": ["PHYS 2240"],
-      "description": "Calculus-based electricity, magnetism, and circuits."
-    },
-    {
-      "code": "PHYS 2240",
-      "title": "Laboratory in Electricity and Magnetism",
-      "credits": 1,
-      "type": "required",
-      "prerequisites": ["PHYS 1730"],
-      "corequisites": ["PHYS 2220"],
-      "description": "Lab companion to PHYS 2220."
-    },
+    { "code": "EENG 2710", "title": "Digital Logic Design",              "credits": 3, "type": "required",  "prerequisites": [],                               "corequisites": [],              "description": "Boolean algebra, logic gates, and digital circuits. Taken as co-req with CSCE 2610." },
 
-    {
-      "code": "ENGL 1310",
-      "title": "College Writing I",
-      "credits": 3,
-      "type": "required",
-      "prerequisites": [],
-      "corequisites": [],
-      "description": "Foundations of academic writing."
-    },
-    {
-      "code": "ENGL 1320",
-      "title": "College Writing II",
-      "credits": 3,
-      "type": "required",
-      "prerequisites": ["ENGL 1310"],
-      "corequisites": [],
-      "description": "Research-based academic writing."
-    },
-    {
-      "code": "TECM 2700",
-      "title": "Technical Writing",
-      "credits": 3,
-      "type": "required",
-      "prerequisites": ["ENGL 1320"],
-      "corequisites": [],
-      "description": "Writing technical reports and documentation."
-    },
+    { "code": "MATH 1710", "title": "Calculus I",                        "credits": 4, "type": "required",  "prerequisites": [],                               "corequisites": [],              "description": "Limits, derivatives, and integrals. Prereq: MATH 1650 or (MATH 1600 + MATH 1610)." },
+    { "code": "MATH 1720", "title": "Calculus II",                       "credits": 3, "type": "required",  "prerequisites": ["MATH 1710"],                    "corequisites": [],              "description": "Integration techniques, sequences, and series." },
+    { "code": "MATH 1780", "title": "Probability Models",                "credits": 3, "type": "required",  "prerequisites": ["MATH 1710"],                    "corequisites": [],              "description": "Probability theory and models. Prereq: MATH 1710 or MATH 1810." },
+    { "code": "MATH 2700", "title": "Linear Algebra and Vector Geometry","credits": 3, "type": "required",  "prerequisites": ["MATH 1720"],                    "corequisites": [],              "description": "Matrices, vector spaces, and linear transformations." },
 
+    { "code": "ENGL 1310", "title": "College Writing I",                 "credits": 3, "type": "required",  "prerequisites": [],                               "corequisites": [],              "description": "Foundations of academic writing." },
+    { "code": "ENGL 1320", "title": "College Writing II",                "credits": 3, "type": "required",  "prerequisites": ["ENGL 1310"],                    "corequisites": [],              "description": "Research-based academic writing." },
+    { "code": "TECM 2700", "title": "Technical Writing",                 "credits": 3, "type": "required",  "prerequisites": ["ENGL 1320"],                    "corequisites": [],              "description": "Writing technical reports and documentation." },
+
+    { "code": "CSCE 3530", "title": "Introduction to Computer Networks", "credits": 3, "type": "elective",  "prerequisites": ["CSCE 3600"],                    "corequisites": [],              "description": "Network architecture, TCP/IP, and protocols.", "choiceGroup": "csce-core-elective" },
+    { "code": "CSCE 4115", "title": "Formal Languages, Automata and Computability","credits": 3, "type": "elective", "prerequisites": ["CSCE 2100", "CSCE 2110"], "corequisites": [], "description": "Regular and context-free languages, Turing machines.", "choiceGroup": "csce-core-elective" },
+    { "code": "CSCE 4430", "title": "Programming Languages",             "credits": 3, "type": "elective",  "prerequisites": ["CSCE 2100", "CSCE 2110"],        "corequisites": [],              "description": "Design and implementation of programming languages.", "choiceGroup": "csce-core-elective" },
+    { "code": "CSCE 4600", "title": "Introduction to Operating Systems", "credits": 3, "type": "elective",  "prerequisites": ["CSCE 3600"],                    "corequisites": [],              "description": "Process management, memory, file systems, and scheduling.", "choiceGroup": "csce-core-elective" },
+    { "code": "CSCE 4650", "title": "Introduction to Compilation Techniques","credits": 3, "type": "elective", "prerequisites": ["CSCE 2100", "CSCE 2110", "CSCE 3600"], "corequisites": [], "description": "Lexical analysis, parsing, and code generation.", "choiceGroup": "csce-core-elective" },
+
+    { "code": "CSCE 4201", "title": "Introduction to Artificial Intelligence","credits": 3, "type": "elective", "prerequisites": ["CSCE 2110"],               "corequisites": [],              "description": "Search, knowledge representation, and learning.", "choiceGroup": "csce-breadth-elective" },
+    { "code": "CSCE 4210", "title": "Game Programming I",                "credits": 3, "type": "elective",  "prerequisites": ["CSCE 2110"],                    "corequisites": [],              "description": "Real-time game loops, physics, and graphics programming.", "choiceGroup": "csce-breadth-elective" },
+    { "code": "CSCE 4230", "title": "Introduction to Computer Graphics", "credits": 3, "type": "elective",  "prerequisites": ["CSCE 2100", "CSCE 2110", "MATH 2700"], "corequisites": [],    "description": "Rendering, shading, and geometric modeling.", "choiceGroup": "csce-breadth-elective" },
+    { "code": "CSCE 4240", "title": "Introduction to Digital Image Processing","credits": 3, "type": "elective", "prerequisites": ["CSCE 2100", "CSCE 2110"], "corequisites": [],           "description": "Image filtering, segmentation, and feature extraction.", "choiceGroup": "csce-breadth-elective" },
+    { "code": "CSCE 4290", "title": "Introduction to Natural Language Processing","credits": 3, "type": "elective", "prerequisites": ["CSCE 2110"],           "corequisites": [],              "description": "Text processing, parsing, and language models.", "choiceGroup": "csce-breadth-elective" },
+    { "code": "CSCE 4350", "title": "Fundamentals of Database Systems",  "credits": 3, "type": "elective",  "prerequisites": ["CSCE 2100", "CSCE 2110"],        "corequisites": [],              "description": "Relational databases, SQL, and storage internals.", "choiceGroup": "csce-breadth-elective" },
+    { "code": "CSCE 4460", "title": "Software Testing and Empirical Methodologies","credits": 3, "type": "elective", "prerequisites": ["CSCE 2110"],          "corequisites": [],              "description": "Testing strategies, quality metrics, and empirical software engineering.", "choiceGroup": "csce-breadth-elective" },
+
+    { "code": "MATH 3680", "title": "Applied Statistics",                "credits": 3, "type": "elective",  "prerequisites": ["MATH 1710"],                    "corequisites": [],              "description": "Probability, descriptive and inferential statistics." }
+  ],
+  "choiceGroups": [
     {
-      "code": "CSCE 3550",
-      "title": "Introduction to Computer Security",
-      "credits": 3,
-      "type": "elective",
-      "prerequisites": ["CSCE 3110"],
-      "corequisites": [],
-      "description": "Foundations of computer and network security."
+      "id": "csce-core-elective",
+      "title": "CSCE Core Electives",
+      "requiredCount": 2,
+      "courseCodes": ["CSCE 3530", "CSCE 4115", "CSCE 4430", "CSCE 4600", "CSCE 4650"]
     },
     {
-      "code": "CSCE 4210",
-      "title": "Computer Graphics",
-      "credits": 3,
-      "type": "elective",
-      "prerequisites": ["CSCE 3110", "MATH 2700"],
-      "corequisites": [],
-      "description": "Rendering, shading, and geometric modeling."
-    },
-    {
-      "code": "CSCE 4430",
-      "title": "Programming Languages",
-      "credits": 3,
-      "type": "elective",
-      "prerequisites": ["CSCE 3110"],
-      "corequisites": [],
-      "description": "Design and implementation of programming languages."
-    },
-    {
-      "code": "CSCE 4520",
-      "title": "Database Systems",
-      "credits": 3,
-      "type": "elective",
-      "prerequisites": ["CSCE 3110"],
-      "corequisites": [],
-      "description": "Relational databases, SQL, and storage internals."
-    },
-    {
-      "code": "CSCE 4550",
-      "title": "Introduction to Information Security",
-      "credits": 3,
-      "type": "elective",
-      "prerequisites": ["CSCE 3110"],
-      "corequisites": [],
-      "description": "Cryptography, authentication, and secure systems."
-    },
-    {
-      "code": "CSCE 4560",
-      "title": "Software Vulnerability Analysis",
-      "credits": 3,
-      "type": "elective",
-      "prerequisites": ["CSCE 3600"],
-      "corequisites": [],
-      "description": "Modern software vulnerabilities and exploitation."
-    },
-    {
-      "code": "CSCE 4620",
-      "title": "Computer Networks",
-      "credits": 3,
-      "type": "elective",
-      "prerequisites": ["CSCE 3600"],
-      "corequisites": [],
-      "description": "Layered architecture, TCP/IP, and protocols."
-    },
-    {
-      "code": "CSCE 4630",
-      "title": "Compiler Design",
-      "credits": 3,
-      "type": "elective",
-      "prerequisites": ["CSCE 4140", "CSCE 4110"],
-      "corequisites": [],
-      "description": "Lexical analysis, parsing, and code generation."
-    },
-    {
-      "code": "CSCE 4730",
-      "title": "Computer Architecture",
-      "credits": 3,
-      "type": "elective",
-      "prerequisites": ["CSCE 2610"],
-      "corequisites": [],
-      "description": "Pipelined processor and memory hierarchy design."
-    },
-    {
-      "code": "CSCE 4925",
-      "title": "Artificial Intelligence",
-      "credits": 3,
-      "type": "elective",
-      "prerequisites": ["CSCE 3110"],
-      "corequisites": [],
-      "description": "Search, knowledge representation, and learning."
+      "id": "csce-breadth-elective",
+      "title": "CSCE Breadth Electives",
+      "requiredCount": 2,
+      "courseCodes": ["CSCE 4201", "CSCE 4210", "CSCE 4230", "CSCE 4240", "CSCE 4290", "CSCE 4350", "CSCE 4460"]
     }
   ],
-  "choiceGroups": [],
   "electives": [
     {
-      "id": "cs-upper-electives",
-      "title": "Upper-Division CSCE Electives",
-      "requiredCredits": 12,
-      "eligibleCourseCodes": [
-        "CSCE 4010",
-        "CSCE 3550",
-        "CSCE 4210",
-        "CSCE 4430",
-        "CSCE 4520",
-        "CSCE 4550",
-        "CSCE 4560",
-        "CSCE 4620",
-        "CSCE 4630",
-        "CSCE 4730",
-        "CSCE 4925"
-      ],
-      "description": "Choose four upper-division CSCE electives (12 credit hours)."
+      "id": "math-elective",
+      "title": "Mathematics Elective",
+      "requiredCredits": 3,
+      "eligibleCourseCodes": ["MATH 3680"],
+      "description": "One approved mathematics elective (3 credit hours)."
     }
   ]
 }

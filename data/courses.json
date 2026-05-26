@@ -1,0 +1,261 @@
+{
+    "required_courses": [
+      {
+        "course": "CSCE 1010 - Discovering Computer Science",
+        "credit_hours": 3,
+        "prerequisites": [],
+        "corequisites": [],
+        "optional": false
+      },
+      {
+        "course": "CSCE 1015 - Computing Tools and Techniques Laboratory",
+        "credit_hours": 1,
+        "prerequisites": [],
+        "corequisites": ["CSCE 1030"],
+        "optional": false
+      },
+      {
+        "course": "CSCE 1030 - Computer Science I",
+        "credit_hours": 3,
+        "prerequisites": [
+          "CSCE 1010",
+          "MATH 1100 OR MATH 1650 OR MATH 1710"
+        ],
+        "corequisites": ["CSCE 1015"],
+        "optional": false
+      },
+      {
+        "course": "CSCE 1040 - Computer Science II",
+        "credit_hours": 3,
+        "prerequisites": [
+          "CSCE 1030",
+          "MATH 1100 OR MATH 1650 OR MATH 1710"
+        ],
+        "corequisites": [],
+        "optional": false
+      },
+      {
+        "course": "CSCE 2100 - Foundations of Computing",
+        "credit_hours": 3,
+        "prerequisites": ["CSCE 1040 OR CSCE 1045"],
+        "corequisites": ["MATH 1710"],
+        "optional": false
+      },
+      {
+        "course": "CSCE 2110 - Foundations of Data Structures",
+        "credit_hours": 3,
+        "prerequisites": ["CSCE 1040 OR CSCE 1045"],
+        "corequisites": ["CSCE 2100"],
+        "optional": false
+      },
+      {
+        "course": "CSCE 2610 - Assembly Language and Computer Organization",
+        "credit_hours": 3,
+        "prerequisites": ["CSCE 2100"],
+        "corequisites": ["EENG 2710"],
+        "optional": false
+      },
+      {
+        "course": "CSCE 3444 - Software Engineering",
+        "credit_hours": 3,
+        "prerequisites": ["CSCE 2110"],
+        "corequisites": [],
+        "optional": false
+      },
+      {
+        "course": "CSCE 3550 - Foundations of Cybersecurity",
+        "credit_hours": 3,
+        "prerequisites": [],
+        "corequisites": ["CSCE 2110"],
+        "optional": false
+      },
+      {
+        "course": "CSCE 3600 - Principles of Systems Programming",
+        "credit_hours": 3,
+        "prerequisites": ["CSCE 2100", "CSCE 2110"],
+        "corequisites": [],
+        "optional": false
+      },
+      {
+        "course": "CSCE 4010 - Social Issues in Computing",
+        "credit_hours": 3,
+        "prerequisites": ["CSCE 3600"],
+        "corequisites": [],
+        "optional": false
+      },
+      {
+        "course": "CSCE 4110 - Algorithms",
+        "credit_hours": 3,
+        "prerequisites": ["CSCE 2110"],
+        "corequisites": [],
+        "optional": false
+      },
+      {
+        "course": "CSCE 4901 - Software Development Capstone I",
+        "credit_hours": 3,
+        "prerequisites": ["CSCE 3444", "TECM 2700"],
+        "corequisites": [],
+        "optional": false
+      },
+      {
+        "course": "CSCE 4902 - Software Development Capstone II",
+        "credit_hours": 3,
+        "prerequisites": ["CSCE 4901"],
+        "corequisites": [],
+        "optional": false
+      },
+      {
+        "course": "EENG 2710 - Digital Logic Design",
+        "credit_hours": 3,
+        "prerequisites": ["Engineering or Engineering Technology majors"],
+        "corequisites": [],
+        "optional": false
+      },
+      {
+        "course": "MATH 1710 - Calculus I",
+        "credit_hours": 4,
+        "prerequisites": [
+          "MATH 1650 OR (MATH 1600 AND MATH 1610)"
+        ],
+        "corequisites": [],
+        "optional": false
+      },
+      {
+        "course": "MATH 1720 - Calculus II",
+        "credit_hours": 3,
+        "prerequisites": ["MATH 1710"],
+        "corequisites": [],
+        "optional": false
+      },
+      {
+        "course": "MATH 1780 - Probability Models",
+        "credit_hours": 3,
+        "prerequisites": ["MATH 1710 OR MATH 1810"],
+        "corequisites": [],
+        "optional": false
+      },
+      {
+        "course": "MATH 2700 - Linear Algebra and Vector Geometry",
+        "credit_hours": 3,
+        "prerequisites": ["MATH 1720"],
+        "corequisites": [],
+        "optional": false
+      }
+    ],
+  
+    "optional_courses": [
+      {
+        "course": "CSCE 4999 - Senior Thesis",
+        "credit_hours": 3,
+        "prerequisites": ["Senior standing"],
+        "corequisites": [],
+        "optional": true
+      },
+      {
+        "course": "CSCE 3530 - Introduction to Computer Networks",
+        "credit_hours": 3,
+        "prerequisites": ["CSCE 3600"],
+        "corequisites": [],
+        "optional": true,
+        "category": "CSCE Core Elective"
+      },
+      {
+        "course": "CSCE 4115 - Formal Languages, Automata and Computability",
+        "credit_hours": 3,
+        "prerequisites": ["CSCE 2100", "CSCE 2110"],
+        "corequisites": [],
+        "optional": true,
+        "category": "CSCE Core Elective"
+      },
+      {
+        "course": "CSCE 4430 - Programming Languages",
+        "credit_hours": 3,
+        "prerequisites": ["CSCE 2100", "CSCE 2110"],
+        "corequisites": [],
+        "optional": true,
+        "category": "CSCE Core Elective"
+      },
+      {
+        "course": "CSCE 4600 - Introduction to Operating Systems",
+        "credit_hours": 3,
+        "prerequisites": ["CSCE 3600"],
+        "corequisites": [],
+        "optional": true,
+        "category": "CSCE Core Elective"
+      },
+      {
+        "course": "CSCE 4650 - Introduction to Compilation Techniques",
+        "credit_hours": 3,
+        "prerequisites": ["CSCE 2100", "CSCE 2110", "CSCE 3600"],
+        "corequisites": [],
+        "optional": true,
+        "category": "CSCE Core Elective"
+      },
+      {
+        "course": "CSCE 4201 - Introduction to Artificial Intelligence",
+        "credit_hours": 3,
+        "prerequisites": ["CSCE 2110"],
+        "corequisites": [],
+        "optional": true,
+        "category": "CSCE Breadth Elective"
+      },
+      {
+        "course": "CSCE 4210 - Game Programming I",
+        "credit_hours": 3,
+        "prerequisites": ["CSCE 2110"],
+        "corequisites": [],
+        "optional": true,
+        "category": "CSCE Breadth Elective"
+      },
+      {
+        "course": "CSCE 4230 - Introduction to Computer Graphics",
+        "credit_hours": 3,
+        "prerequisites": ["CSCE 2100", "CSCE 2110", "MATH 2700"],
+        "corequisites": [],
+        "optional": true,
+        "category": "CSCE Breadth Elective"
+      },
+      {
+        "course": "CSCE 4240 - Introduction to Digital Image Processing",
+        "credit_hours": 3,
+        "prerequisites": ["CSCE 2100", "CSCE 2110"],
+        "corequisites": [],
+        "optional": true,
+        "category": "CSCE Breadth Elective"
+      },
+      {
+        "course": "CSCE 4290 - Introduction to Natural Language Processing",
+        "credit_hours": 3,
+        "prerequisites": ["CSCE 2110"],
+        "corequisites": [],
+        "optional": true,
+        "category": "CSCE Breadth Elective"
+      },
+      {
+        "course": "CSCE 4350 - Fundamentals of Database Systems",
+        "credit_hours": 3,
+        "prerequisites": ["CSCE 2100", "CSCE 2110"],
+        "corequisites": [],
+        "optional": true,
+        "category": "CSCE Breadth Elective"
+      },
+      {
+        "course": "CSCE 4460 - Software Testing and Empirical Methodologies",
+        "credit_hours": 3,
+        "prerequisites": ["CSCE 2110"],
+        "corequisites": [],
+        "optional": true,
+        "category": "CSCE Breadth Elective"
+      },
+      {
+        "course": "MATH 3680 - Applied Statistics",
+        "credit_hours": 3,
+        "prerequisites": [
+          "MATH 1710",
+          "MATH 1720 (can be concurrent)"
+        ],
+        "corequisites": [],
+        "optional": true
+      }
+    ]
+  }

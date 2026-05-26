@@ -52,7 +52,14 @@ export function PrereqDAGSection() {
             <LegendChip color="#34d399" bg="rgba(52,211,153,0.1)"  border="rgba(52,211,153,0.4)"  label="completed" />
             <LegendChip color="#2fffd0" bg="rgba(47,255,208,0.1)"  border="rgba(47,255,208,0.4)"  label="available" />
             <LegendChip color="rgba(255,255,255,0.4)" bg="rgba(255,255,255,0.04)" border="rgba(255,255,255,0.12)" label="locked" />
-            <LegendChip color="#c4b5fd" bg="rgba(196,181,253,0.08)" border="rgba(196,181,253,0.3)" label="transfer" />
+            <LegendChip color="#c4b5fd" bg="rgba(196,181,253,0.08)" border="rgba(196,181,253,0.3)" label="transfer/OPT" />
+          </div>
+          {/* Edge color key */}
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] text-[#84a5aa]">
+            <EdgeKey color="#2fffd0" label="CSCE edges" />
+            <EdgeKey color="#60a5fa" label="MATH edges" />
+            <EdgeKey color="#fbbf24" label="EENG edges" />
+            <EdgeKey color="#f97316" label="ENGL/TECM edges" />
           </div>
         </div>
 
@@ -83,6 +90,17 @@ function LegendChip({ color, bg, border, label }: {
       style={{ borderColor: border, background: bg, color }}
     >
       <span className="h-2 w-2 rounded-full" style={{ background: color }} />
+      {label}
+    </span>
+  );
+}
+
+function EdgeKey({ color, label }: { color: string; label: string }) {
+  return (
+    <span className="inline-flex items-center gap-1.5">
+      <svg width="20" height="6" viewBox="0 0 20 6" aria-hidden="true">
+        <line x1="0" y1="3" x2="20" y2="3" stroke={color} strokeWidth="2" strokeLinecap="round" />
+      </svg>
       {label}
     </span>
   );
