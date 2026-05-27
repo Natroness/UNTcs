@@ -10,8 +10,6 @@ import ReactFlow, {
 import "reactflow/dist/style.css";
 import CourseNode from "@/components/CourseNode";
 import type { DAGGraph } from "@/lib/buildDAG";
-import { svgPositionLayout } from "@/lib/svgLayout";
-import { useMemo } from "react";
 
 const nodeTypes = { courseNode: CourseNode };
 
@@ -19,26 +17,26 @@ interface Props {
   graph: DAGGraph;
 }
 
+/**
+ * Renders the prerequisite DAG using React Flow.
+ *
+ * Node positions are fixed (set by buildDAG from the handmade courseMap.svg).
+ * No auto-layout is called here — positions must not change between renders.
+ */
 export function CourseDAG({ graph }: Props) {
-  // Apply compact layout at render time so the section component stays simple
-  const { nodes, edges } = useMemo(
-    () => svgPositionLayout(graph.nodes, graph.edges),
-    [graph],
-  );
-
   return (
     <div className="h-[720px] w-full overflow-hidden rounded-2xl border border-white/12 bg-[#0a0a0a]">
       <ReactFlow
-        nodes={nodes as Node[]}
-        edges={edges as Edge[]}
+        nodes={graph.nodes as Node[]}
+        edges={graph.edges as Edge[]}
         nodeTypes={nodeTypes}
         fitView
-        fitViewOptions={{ padding: 0.12 }}
+        fitViewOptions={{ padding: 0.1 }}
         proOptions={{ hideAttribution: true }}
-        nodesDraggable
+        nodesDraggable={false}
         nodesConnectable={false}
         elementsSelectable
-        minZoom={0.12}
+        minZoom={0.08}
         maxZoom={2}
       >
         <Background gap={28} color="rgba(255,255,255,0.04)" />

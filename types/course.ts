@@ -12,6 +12,8 @@ export interface CourseNodeData {
   status: CourseStatus;
   /** True when this completed course was fulfilled via a transfer equivalent. */
   isTransfer?: boolean;
+  /** 'svg' = handmade position from courseMap.svg; 'fallback' = auto-placed */
+  layoutSource?: "svg" | "fallback";
 }
 
 export interface Course {

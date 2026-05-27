@@ -3,7 +3,8 @@
 import { memo } from "react";
 import { Handle, Position } from "reactflow";
 import type { CourseNodeData } from "@/types/course";
-import { SVG_NODE_W as COMPACT_NODE_W } from "@/lib/svgLayout";
+
+const NODE_W = 168;
 
 const statusCard: Record<CourseNodeData["status"], string> = {
   completed: "border-emerald-400/50 bg-gradient-to-b from-emerald-400/20 to-transparent",
@@ -11,7 +12,6 @@ const statusCard: Record<CourseNodeData["status"], string> = {
   locked:    "border-white/12 bg-gradient-to-b from-white/5 to-transparent",
 };
 
-// Elective cards get a subtler locked style
 const electiveCard: Record<CourseNodeData["status"], string> = {
   completed: "border-emerald-400/40 bg-gradient-to-b from-emerald-400/15 to-transparent",
   available: "border-[#2fffd0]/35 bg-gradient-to-b from-[#2fffd0]/10 to-transparent",
@@ -30,6 +30,7 @@ interface Props {
 
 function CourseNode({ data }: Props) {
   const isElective = data.courseType === "elective";
+  const isFallback = data.layoutSource === "fallback";
   const cardStyle = isElective ? electiveCard[data.status] : statusCard[data.status];
 
   return (
@@ -37,13 +38,17 @@ function CourseNode({ data }: Props) {
       <Handle type="target" position={Position.Top} className="!border-0 !bg-white/20" />
       <div
         className={`rounded-xl border-2 px-3 py-2.5 ${cardStyle}`}
-        style={{ width: COMPACT_NODE_W }}
+        style={{ width: NODE_W }}
       >
         <div className="flex items-start justify-between gap-1">
-          <span className={`font-mono text-[12px] font-bold leading-tight ${isElective && data.status === "locked" ? "text-white/50" : "text-white"}`}>
+          <span
+            className={`font-mono text-[12px] font-bold leading-tight ${
+              isElective && data.status === "locked" ? "text-white/50" : "text-white"
+            }`}
+          >
             {data.code}
           </span>
-          <div className="flex shrink-0 items-center gap-1">
+          <div className="flex shrink-0 flex-wrap items-center gap-1">
             {/* Elective badge */}
             {isElective && (
               <span className="rounded-full border border-violet-400/30 bg-violet-400/10 px-1.5 py-0.5 text-[8px] font-bold leading-none text-violet-300">
@@ -56,12 +61,24 @@ function CourseNode({ data }: Props) {
                 TR
               </span>
             )}
-            <span className={`rounded-full px-1.5 py-0.5 text-[9px] font-bold leading-none ${statusBadge[data.status]}`}>
+            {/* Fallback badge — shown when SVG had no position for this course */}
+            {isFallback && (
+              <span className="rounded-full border border-yellow-400/30 bg-yellow-400/10 px-1.5 py-0.5 text-[8px] font-bold leading-none text-yellow-300">
+                POS?
+              </span>
+            )}
+            <span
+              className={`rounded-full px-1.5 py-0.5 text-[9px] font-bold leading-none ${statusBadge[data.status]}`}
+            >
               {data.credits}cr
             </span>
           </div>
         </div>
-        <p className={`mt-1 line-clamp-2 text-[10px] leading-snug ${isElective && data.status === "locked" ? "text-white/30" : "text-[#84a5aa]"}`}>
+        <p
+          className={`mt-1 line-clamp-2 text-[10px] leading-snug ${
+            isElective && data.status === "locked" ? "text-white/30" : "text-[#84a5aa]"
+          }`}
+        >
           {data.title}
         </p>
       </div>
